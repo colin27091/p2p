@@ -77,16 +77,16 @@ public class Server extends JFrame {
         try {
             serverSocket = new ServerSocket(port);
             dispose();
-            //Message message = new Message("Waiting for client ...");
+            Message message = new Message("Waiting for client ...");
             Thread getSocket = new Thread(new Runnable() {
                 @Override
                 public void run() {
                     try {
                         socket = serverSocket.accept();
-                        //message.dispose();
+                        message.dispose();
                         List<Icon> icons = folderToList();
                         sendIcons(icons);
-                        //new Application(socket,icons);
+                        new Application(socket,icons);
                     } catch (IOException e) {
                     }
                 }
