@@ -2,15 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c95a9152-fcc7-40bf-a33b-b9bfa42a691a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Form.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Form.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Acceuil.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Acceuil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AppGUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Application.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Client.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Icon.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Message.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Message.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Server.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ErrorTreeViewConfiguration">
+    <option name="autoscrollToSource" value="true" />
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -31,10 +46,23 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
   </component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\c\Documents\CoursEPSI\Architecture\p2p\src" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="p2p" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Server" />
       <module name="p2p" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -43,6 +71,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Server" />
       </list>
     </recent_temporary>
   </component>
@@ -57,24 +86,40 @@
       <option name="presentableId" value="Default" />
       <updated>1603353432060</updated>
     </task>
+    <task id="LOCAL-00001" summary="form">
+      <created>1603347459982</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1603347459982</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="form" />
+    <option name="LAST_COMMIT_MESSAGE" value="form" />
+  </component>
   <component name="WindowStateProjectService">
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1603347438051">
+    <state x="424" y="6" key="CommitChangelistDialog2" timestamp="1603347459053">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603347438051" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1603347438050">
+    <state x="424" y="6" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1603347459053" />
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1603355324655">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1603347438050" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1603347438050">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603355324655" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1603355324654">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1603347438050" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1603347438051">
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1603355324654" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1603355324654">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1603347438051" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1603355324654" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1603355324654">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1603355324654" />
   </component>
 </project>
