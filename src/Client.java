@@ -2,9 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.io.*;
 import java.net.Socket;
+import java.security.*;
 import java.util.List;
 
 public class Client extends JFrame{
@@ -14,7 +14,17 @@ public class Client extends JFrame{
     private JTextField port;
     private JTextField server;
     private JLabel error;
+
     private Socket socket;
+    private InputStream in;
+    private OutputStream out;
+
+    private KeyPairGenerator keyGen;
+    private KeyPair pair;
+    private PrivateKey privateKey;
+    private PublicKey publicKey;
+    private PublicKey guestPublicKey;
+
 
 
     public Client(){
@@ -37,38 +47,54 @@ public class Client extends JFrame{
 
     public void getListener(){
 
-        runButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String strServer = server.getText();
-                int intPort = Integer.parseInt(port.getText());
-                try {
-                    socket = new Socket(strServer, intPort);
-                    dispose();
-                    new Application(socket, receiveIcons());
-                } catch (IOException | ClassNotFoundException ex) {
-                    error.setText("Access denied");
-                    error.setForeground(Color.red);
-                }
-            }
-        });
-
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        runButton.addActionListener((e) -> {
+            String strServer = server.getText();
+            int intPort = Integer.parseInt(port.getText());
+            try {
+                socket = new Socket(strServer, intPort);
                 dispose();
-                new Acceuil();
+                putIO();
+                generateKeys();
+                receivePublicKey();
+                new Application();
+                //sendPublicKey();
+            } catch (IOException | NoSuchAlgorithmException | ClassNotFoundException ex) {
+                error.setText("Access denied");
+                error.setForeground(Color.red);
             }
+
+        });
+
+        backButton.addActionListener(e -> {
+            dispose();
+            new Acceuil();
         });
 
     }
 
-    public List<Icon> receiveIcons() throws IOException, ClassNotFoundException {
-        ObjectInputStream inObject = new ObjectInputStream(socket.getInputStream());
-        List<Icon> icons = (List<Icon>) inObject.readObject();
-        return icons;
+    public void putIO() throws IOException {
+        in = socket.getInputStream();
+        out = socket.getOutputStream();
     }
 
+    public void generateKeys() throws NoSuchAlgorithmException {
+        this.keyGen = KeyPairGenerator.getInstance("RSA");
+        this.keyGen.initialize(1024);
+        this.pair = this.keyGen.generateKeyPair();
+        this.privateKey = this.pair.getPrivate();
+        this.publicKey = this.pair.getPublic();
+    }
 
+    public void receivePublicKey() throws IOException, ClassNotFoundException {
+        ObjectInputStream inputObject = new ObjectInputStream(in);
+        this.guestPublicKey = (PublicKey) inputObject.readObject();
+        System.out.println(this.guestPublicKey);
+        inputObject.close();
+    }
 
+    public void sendPublicKey() throws IOException, ClassNotFoundException {
+        ObjectOutputStream outObject = new ObjectOutputStream(out);
+        outObject.writeObject(this.publicKey);
+        outObject.flush();
+    }
 }

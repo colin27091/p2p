@@ -3,7 +3,6 @@ import java.util.List;
 
 public class Application {
 
-    private List<Icon> icons;
     private Socket socket;
     private AppGUI appGUI;
 
@@ -11,12 +10,9 @@ public class Application {
         new Application(new Socket());
     }*/
 
-    public Application(Socket socket, List<Icon> icons){
-        this.icons = icons;
-        this.socket = socket;
+    public Application(){
 
-        appGUI = new AppGUI(icons);
-        appGUI.drawIcons();
+        appGUI = new AppGUI();
     }
 
 }

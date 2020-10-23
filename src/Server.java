@@ -1,18 +1,12 @@
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
+import java.io.*;
+
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.security.*;
+
 
 public class Server extends JFrame {
 
@@ -22,16 +16,21 @@ public class Server extends JFrame {
     private JTextField port;
     private JLabel error;
     private Socket socket;
+    private InputStream in;
+    private OutputStream out;
     private ServerSocket serverSocket;
+
+    private KeyPairGenerator keyGen;
+    private KeyPair pair;
+    private PrivateKey privateKey;
+    private PublicKey publicKey;
+    private PublicKey guestPublicKey;
+
 
 
     public Server(){
         this.getGraphical();
 
-    }
-
-    public static void main(String[] args) {
-        System.out.println("Hello");
     }
 
 
@@ -50,25 +49,20 @@ public class Server extends JFrame {
 
     public void openListener(){
 
-        runButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try{
-                    int intPort = Integer.parseInt(port.getText());
-                    openServer(intPort);
-                } catch(NumberFormatException ex){
-                    error.setText("Invalid Input");
-                    error.setForeground(Color.red);
-                }
+        runButton.addActionListener(e -> {
+            try{
+                int intPort = Integer.parseInt(port.getText());
+                openServer(intPort);
+            } catch(NumberFormatException ex){
+                error.setText("Invalid Input");
+                error.setForeground(Color.red);
             }
+
         });
 
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-                new Acceuil();
-            }
+        backButton.addActionListener(e -> {
+            dispose();
+            new Acceuil();
         });
 
     }
@@ -84,10 +78,13 @@ public class Server extends JFrame {
                     try {
                         socket = serverSocket.accept();
                         message.dispose();
-                        List<Icon> icons = folderToList();
-                        sendIcons(icons);
-                        new Application(socket,icons);
-                    } catch (IOException e) {
+                        putIO();
+                        generateKeys();
+                        sendPublicKey();
+                        new Application();
+                        //receivePublicKey();
+                    } catch (IOException | NoSuchAlgorithmException | ClassNotFoundException e) {
+                        System.err.println(e.getMessage());
                     }
                 }
             });
@@ -98,24 +95,35 @@ public class Server extends JFrame {
         }
     }
 
-    public void sendIcons(List<Icon> icons) throws IOException {
-        OutputStream out = socket.getOutputStream();
-        ObjectOutputStream outObject = new ObjectOutputStream(out);
-        outObject.writeObject(icons);
-        outObject.flush();
+
+    public void putIO() throws IOException {
+        in = socket.getInputStream();
+        out = socket.getOutputStream();
     }
 
-    public List<Icon> folderToList(){
-        File folder = new File("icons");
-        List<Icon> first = Arrays.asList(folder.listFiles())
-                .stream()
-                .map(icon -> new Icon(icon))
-                .collect(Collectors.toList());
-        List<Icon> icons = first;
-        icons.addAll(first);
-        Collections.shuffle(icons);
-        return icons;
+    public void generateKeys() throws NoSuchAlgorithmException {
+        this.keyGen = KeyPairGenerator.getInstance("RSA");
+        this.keyGen.initialize(1024);
+        this.pair = this.keyGen.generateKeyPair();
+        this.privateKey = this.pair.getPrivate();
+        this.publicKey = this.pair.getPublic();
     }
+
+    public void sendPublicKey() throws IOException, ClassNotFoundException {
+        ObjectOutputStream outObject = new ObjectOutputStream(out);
+        outObject.writeObject(this.publicKey);
+        outObject.flush();
+        outObject.close();
+    }
+
+    /*public void receivePublicKey() throws IOException, ClassNotFoundException {
+        ObjectInputStream inputObject = new ObjectInputStream(in);
+        this.guestPublicKey = (PublicKey) inputObject.readObject();
+        System.out.println(this.guestPublicKey);
+        inputObject.close();
+    }*/
+
+
 
 
 }
