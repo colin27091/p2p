@@ -1,13 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.*;
 import java.net.Socket;
 import java.security.*;
-import java.util.List;
 
-public class Client extends JFrame{
+public class Client extends JFrame implements Entity{
     private JPanel pane;
     private JButton runButton;
     private JButton backButton;
@@ -41,11 +38,11 @@ public class Client extends JFrame{
         this.setLocationRelativeTo(null);
 
         this.getContentPane().add(pane, BorderLayout.CENTER);
-        this.getListener();
+        this.putListener();
 
     }
 
-    public void getListener(){
+    public void putListener(){
 
         runButton.addActionListener((e) -> {
             String strServer = server.getText();
@@ -56,8 +53,8 @@ public class Client extends JFrame{
                 putIO();
                 generateKeys();
                 receivePublicKey();
+                sendPublicKey();
                 new Application();
-                //sendPublicKey();
             } catch (IOException | NoSuchAlgorithmException | ClassNotFoundException ex) {
                 error.setText("Access denied");
                 error.setForeground(Color.red);
@@ -89,7 +86,6 @@ public class Client extends JFrame{
         ObjectInputStream inputObject = new ObjectInputStream(in);
         this.guestPublicKey = (PublicKey) inputObject.readObject();
         System.out.println(this.guestPublicKey);
-        inputObject.close();
     }
 
     public void sendPublicKey() throws IOException, ClassNotFoundException {
@@ -97,4 +93,6 @@ public class Client extends JFrame{
         outObject.writeObject(this.publicKey);
         outObject.flush();
     }
+
+
 }

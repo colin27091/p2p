@@ -1,4 +1,5 @@
 
+import javax.crypto.*;
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
@@ -8,7 +9,7 @@ import java.net.Socket;
 import java.security.*;
 
 
-public class Server extends JFrame {
+public class Server extends JFrame implements Entity{
 
     private JPanel pane;
     private JButton runButton;
@@ -25,6 +26,11 @@ public class Server extends JFrame {
     private PrivateKey privateKey;
     private PublicKey publicKey;
     private PublicKey guestPublicKey;
+
+    private KeyGenerator generator;
+    private Key key;
+
+    private Cipher cipher;
 
 
 
@@ -43,12 +49,12 @@ public class Server extends JFrame {
         this.setLocationRelativeTo(null);
 
         this.getContentPane().add(pane, BorderLayout.CENTER);
-        this.openListener();
+        this.putListener();
 
     }
 
-    public void openListener(){
-
+    @Override
+    public void putListener() {
         runButton.addActionListener(e -> {
             try{
                 int intPort = Integer.parseInt(port.getText());
@@ -64,8 +70,9 @@ public class Server extends JFrame {
             dispose();
             new Acceuil();
         });
-
     }
+
+
 
     public void openServer(int port) {
         try {
@@ -82,8 +89,10 @@ public class Server extends JFrame {
                         generateKeys();
                         sendPublicKey();
                         new Application();
-                        //receivePublicKey();
-                    } catch (IOException | NoSuchAlgorithmException | ClassNotFoundException e) {
+                        receivePublicKey();
+                        createSymetricKey();
+                        cryptObject(key);
+                    } catch (IOException | NoSuchAlgorithmException | ClassNotFoundException | NoSuchPaddingException | InvalidKeyException | BadPaddingException | IllegalBlockSizeException e) {
                         System.err.println(e.getMessage());
                     }
                 }
@@ -113,15 +122,42 @@ public class Server extends JFrame {
         ObjectOutputStream outObject = new ObjectOutputStream(out);
         outObject.writeObject(this.publicKey);
         outObject.flush();
-        outObject.close();
     }
 
-    /*public void receivePublicKey() throws IOException, ClassNotFoundException {
+    public void receivePublicKey() throws IOException, ClassNotFoundException {
         ObjectInputStream inputObject = new ObjectInputStream(in);
         this.guestPublicKey = (PublicKey) inputObject.readObject();
         System.out.println(this.guestPublicKey);
-        inputObject.close();
-    }*/
+    }
+
+    public void createSymetricKey() throws NoSuchAlgorithmException, IOException, NoSuchPaddingException, InvalidKeyException {
+        generator = KeyGenerator.getInstance("AES");
+        key = generator.generateKey();
+
+    }
+
+    public void cryptObject(Object obj) throws IOException, BadPaddingException, IllegalBlockSizeException {
+
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        ObjectOutputStream outKey = new ObjectOutputStream(bos);
+        outKey.writeObject(obj);
+
+        byte[] data = cipher.doFinal(bos.toByteArray());
+
+        OutputStream outObject = new ObjectOutputStream(out);
+        outObject.write(data);
+        outObject.flush();
+
+    }
+
+    public void decryptObject() throws IOException {
+        InputStream inObject = new ObjectInputStream(in);
+        byte[] data = inObject.readAllBytes();
+
+        Key p = cipher.unwrap(data,Cip);
+
+
+    }
 
 
 
