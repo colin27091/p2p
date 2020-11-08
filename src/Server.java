@@ -154,7 +154,7 @@ public class Server extends JFrame implements Entity{
         InputStream inObject = new ObjectInputStream(in);
         byte[] data = inObject.readAllBytes();
 
-        Key p = cipher.unwrap(data,Cip);
+        //Key p = cipher.unwrap(data,Cip);
 
 
     }
