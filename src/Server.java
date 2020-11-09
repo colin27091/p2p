@@ -85,7 +85,7 @@ public class Server extends JFrame{
                         socket = serverSocket.accept();
                         message.dispose();
                         putIO();
-                        generateKeys();
+                        Util.generateKeys();
                         sendPublicKey();
                         new Application();
                         receivePublicKey();
@@ -107,14 +107,6 @@ public class Server extends JFrame{
     public void putIO() throws IOException {
         in = socket.getInputStream();
         out = socket.getOutputStream();
-    }
-
-    public void generateKeys() throws NoSuchAlgorithmException {
-        this.keyGen = KeyPairGenerator.getInstance("RSA");
-        this.keyGen.initialize(1024);
-        this.pair = this.keyGen.generateKeyPair();
-        this.privateKey = this.pair.getPrivate();
-        this.publicKey = this.pair.getPublic();
     }
 
     public void sendPublicKey() throws IOException, ClassNotFoundException {
