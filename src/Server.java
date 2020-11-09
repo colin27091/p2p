@@ -46,7 +46,7 @@ public class Server extends JFrame implements Entity{
         this.setPreferredSize(new Dimension(300,300));
         this.pack();
         this.setVisible(true);
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null); 
 
         this.getContentPane().add(pane, BorderLayout.CENTER);
         this.putListener();
