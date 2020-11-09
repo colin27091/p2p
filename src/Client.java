@@ -4,7 +4,7 @@ import java.io.*;
 import java.net.Socket;
 import java.security.*;
 
-public class Client extends JFrame implements Entity{
+public class Client extends JFrame{
     private JPanel pane;
     private JButton runButton;
     private JButton backButton;

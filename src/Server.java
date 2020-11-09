@@ -9,7 +9,7 @@ import java.net.Socket;
 import java.security.*;
 
 
-public class Server extends JFrame implements Entity{
+public class Server extends JFrame{
 
     private JPanel pane;
     private JButton runButton;
@@ -53,7 +53,6 @@ public class Server extends JFrame implements Entity{
 
     }
 
-    @Override
     public void putListener() {
         runButton.addActionListener(e -> {
             try{
