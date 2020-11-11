@@ -12,13 +12,15 @@ public class Application {
         new Application(new Socket());
     }*/
 
+    public Application(){
+        appGUI = new AppGUI();
+    }
+
     public Application(Socket socket, Key key){
         this.socket = socket;
         this.key = key;
         appGUI = new AppGUI();
     }
-    public Application(){
-        appGUI = new AppGUI();
-    }
+
 
 }

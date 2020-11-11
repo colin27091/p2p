@@ -1,20 +1,8 @@
-import javax.crypto.BadPaddingException;
-import javax.crypto.Cipher;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
-import java.io.Console;
-import java.io.IOException;
-import java.security.InvalidKeyException;
-import java.security.Key;
-import java.security.NoSuchAlgorithmException;
-import java.util.HashMap;
-
 public class Main {
 
     public static void main(String[] args) {
         //Acceuil acceuil = new Acceuil();
-        new Application();
-
+        //Application app = new Application();
+        AppGUI appGUI = new AppGUI();
     }
-
 }
