@@ -16,47 +16,33 @@ public class Client extends JFrame{
     private InputStream in;
     private OutputStream out;
 
-    private KeyPairGenerator keyGen;
-    private KeyPair pair;
     private PrivateKey privateKey;
     private PublicKey publicKey;
-    private PublicKey guestPublicKey;
-
-
 
     public Client(){
         this.getGraphical();
+        this.putListener();
     }
 
     public void getGraphical(){
-
         this.setTitle("Application Streaming Video");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setPreferredSize(new Dimension(300,300));
         this.pack();
         this.setVisible(true);
         this.setLocationRelativeTo(null);
-
         this.getContentPane().add(pane, BorderLayout.CENTER);
-        this.putListener();
-
     }
 
     public void putListener(){
 
         runButton.addActionListener((e) -> {
-            String strServer = server.getText();
-            int intPort = Integer.parseInt(port.getText());
-            try {
-                socket = new Socket(strServer, intPort);
-                dispose();
-                putIO();
-                generateKeys();
-                receivePublicKey();
-                sendPublicKey();
-                new Application();
-            } catch (IOException | NoSuchAlgorithmException | ClassNotFoundException ex) {
-                error.setText("Access denied");
+            try{
+                String strServer = server.getText();
+                int intPort = Integer.parseInt(port.getText());
+                openConnection(strServer, intPort);
+            } catch(NumberFormatException ex){
+                error.setText("Invalid Input");
                 error.setForeground(Color.red);
             }
 
@@ -69,30 +55,20 @@ public class Client extends JFrame{
 
     }
 
-    public void putIO() throws IOException {
-        in = socket.getInputStream();
-        out = socket.getOutputStream();
+    private void openConnection(String strServer, int intPort) {
+        try {
+            socket = new Socket(strServer, intPort);
+            in = socket.getInputStream();
+            out = socket.getOutputStream();
+            Key[] keys = Util.generateKeys();
+            this.privateKey = (PrivateKey) keys[0];
+            this.publicKey = (PublicKey) keys[1];
+            Util.sendPublicKey(out,publicKey);
+            dispose();
+        } catch (IOException e) {
+            error.setText("Connexion non établie");
+            error.setForeground(Color.red);
+        }
     }
-
-    public void generateKeys() throws NoSuchAlgorithmException {
-        this.keyGen = KeyPairGenerator.getInstance("RSA");
-        this.keyGen.initialize(1024);
-        this.pair = this.keyGen.generateKeyPair();
-        this.privateKey = this.pair.getPrivate();
-        this.publicKey = this.pair.getPublic();
-    }
-
-    public void receivePublicKey() throws IOException, ClassNotFoundException {
-        ObjectInputStream inputObject = new ObjectInputStream(in);
-        this.guestPublicKey = (PublicKey) inputObject.readObject();
-        System.out.println(this.guestPublicKey);
-    }
-
-    public void sendPublicKey() throws IOException, ClassNotFoundException {
-        ObjectOutputStream outObject = new ObjectOutputStream(out);
-        outObject.writeObject(this.publicKey);
-        outObject.flush();
-    }
-
 
 }

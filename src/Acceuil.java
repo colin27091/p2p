@@ -20,19 +20,13 @@ public class Acceuil extends JFrame{
 
     this.getContentPane().add(bord, BorderLayout.CENTER);
 
-    clientButton.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            dispose();
-            new Client();
-        }
+    clientButton.addActionListener(e -> {
+        dispose();
+        new Client();
     });
-        serverButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-                new Server();
-            }
+        serverButton.addActionListener(e -> {
+            dispose();
+            new Server();
         });
     }
 }
