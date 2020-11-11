@@ -11,8 +11,9 @@ import java.util.HashMap;
 
 public class Main {
 
-    public static void main(String[] args) throws NoSuchAlgorithmException, IllegalBlockSizeException, InvalidKeyException, BadPaddingException, NoSuchPaddingException, IOException, ClassNotFoundException {
-        Acceuil acceuil = new Acceuil();
+    public static void main(String[] args) {
+        //Acceuil acceuil = new Acceuil();
+        new Application();
 
     }
 

@@ -11,22 +11,22 @@ public class Acceuil extends JFrame{
 
     public Acceuil(){
 
-    this.setTitle("Application Streaming Video");
-    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    this.setPreferredSize(new Dimension(200,200));
-    this.pack();
-    this.setVisible(true);
-    this.setLocationRelativeTo(null);
+        this.setTitle("P2P Conversation");
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setPreferredSize(new Dimension(200,200));
+        this.pack();
+        this.setVisible(true);
+        this.setLocationRelativeTo(null);
 
-    this.getContentPane().add(bord, BorderLayout.CENTER);
+        this.getContentPane().add(bord, BorderLayout.CENTER);
 
-    clientButton.addActionListener(e -> {
-        dispose();
-        new Client();
-    });
-        serverButton.addActionListener(e -> {
+        clientButton.addActionListener(e -> {
             dispose();
-            new Server();
+            new Client();
         });
-    }
+            serverButton.addActionListener(e -> {
+                dispose();
+                new Server();
+            });
+        }
 }

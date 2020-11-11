@@ -14,7 +14,7 @@ public class Util {
         } catch (NoSuchAlgorithmException e) {
             System.err.println(e.getMessage());
         }
-        rsa.initialize(1024);
+        rsa.initialize(2048);
         KeyPair pair = rsa.generateKeyPair();
         Key[] keys = new Key[2];
         keys[0] = pair.getPrivate();
@@ -26,27 +26,27 @@ public class Util {
         KeyGenerator generator = null;
         try {
             generator = KeyGenerator.getInstance("AES");
+            generator.init(256);
         } catch (NoSuchAlgorithmException e) {
             System.err.println(e.getMessage());
         }
         return generator.generateKey();
     }
 
-    static void sendPublicKey(OutputStream out, PublicKey pk){
+    static void sendObject(OutputStream out, Object obj){
         try {
             ObjectOutputStream outObject = new ObjectOutputStream(out);
-            outObject.writeObject(pk);
+            outObject.writeObject(obj);
             outObject.flush();
-            outObject.close();
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
 
     }
 
-    static PublicKey receivePublicKey(InputStream in) throws IOException, ClassNotFoundException {
+    static Object receiveObject(InputStream in) throws IOException, ClassNotFoundException {
         ObjectInputStream inObject = new ObjectInputStream(in);
-        return (PublicKey) inObject.readObject();
+        return inObject.readObject();
     }
 
     static byte[] cryptObject(Object obj, Key key) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, IOException, BadPaddingException, IllegalBlockSizeException {
@@ -57,7 +57,7 @@ public class Util {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         ObjectOutputStream outObjectBos = new ObjectOutputStream(bos);
         outObjectBos.writeObject(obj);
-
+        System.out.println(bos.toByteArray().length);
         return cipher.doFinal(bos.toByteArray());
     }
 
@@ -73,8 +73,5 @@ public class Util {
         return inObjectBis.readObject();
     }
 
-    static void send(OutputStream out, Object obj){
-
-    }
 
 }
