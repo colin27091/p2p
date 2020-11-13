@@ -11,9 +11,12 @@ public class AppGUI extends JFrame {
     static int height = 500;
     private JPanel pane;
 
-    private JLabel transfer;
+
+    private JTabbedPane chat;
+    private JList list1;
+    private JTextField textField1;
     private JLabel send;
-    private JTextField text;
+    private JLabel transfer;
 
 
     public AppGUI() throws IOException {

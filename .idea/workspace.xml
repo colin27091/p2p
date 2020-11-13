@@ -2,32 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c95a9152-fcc7-40bf-a33b-b9bfa42a691a" name="Default Changelist" comment="change direction">
-      <change afterPath="$PROJECT_DIR$/icons/add.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/send.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/icons/icons8-accueil-24.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/icons/icons8-caisse-à-outils-24.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/icons/icons8-calendrier-24.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/icons/icons8-clé-24 (2).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/icons/icons8-clé-24.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/icons/icons8-curseur-24.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/icons/icons8-dossier-24.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/icons/icons8-facebook-24.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/icons/icons8-facebook-nouveau-24.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/icons/icons8-instagram-24.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/icons/icons8-linkedin-24.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/icons/icons8-plus-24(1).png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/icons/icons8-plus-24.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/icons/icons8-rafraîchir-24.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/icons/icons8-support-24.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/icons/icons8-supprimer-24.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/icons/icons8-synchroniser-24.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/icons/icons8-télécharger-depuis-le-cloud-24.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AppGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppGUI.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AppGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Icon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Icon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,25 +188,25 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1603441081858" />
-    <state width="1877" height="278" key="GridCell.Tab.0.bottom" timestamp="1605287585497">
+    <state width="1877" height="278" key="GridCell.Tab.0.bottom" timestamp="1605289914356">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="278" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605287585497" />
+    <state width="1877" height="278" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605289914356" />
     <state width="1493" height="291" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603449065157" />
-    <state width="1877" height="278" key="GridCell.Tab.0.center" timestamp="1605287585497">
+    <state width="1877" height="278" key="GridCell.Tab.0.center" timestamp="1605289914351">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="278" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605287585497" />
+    <state width="1877" height="278" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605289914351" />
     <state width="1493" height="291" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1603449065157" />
-    <state width="1877" height="278" key="GridCell.Tab.0.left" timestamp="1605287585497">
+    <state width="1877" height="278" key="GridCell.Tab.0.left" timestamp="1605289914351">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="278" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605287585497" />
+    <state width="1877" height="278" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605289914351" />
     <state width="1493" height="291" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1603449065157" />
-    <state width="1877" height="278" key="GridCell.Tab.0.right" timestamp="1605287585497">
+    <state width="1877" height="278" key="GridCell.Tab.0.right" timestamp="1605289914351">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="278" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605287585497" />
+    <state width="1877" height="278" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605289914351" />
     <state width="1493" height="291" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1603449065157" />
     <state width="1877" height="187" key="GridCell.Tab.1.bottom" timestamp="1605098915825">
       <screen x="1920" y="0" width="1920" height="1040" />
@@ -255,6 +232,10 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2381" y="164" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605123337340" />
+    <state x="2759" y="314" key="UIDesigner.ListEditorDialog" timestamp="1605289315536">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2759" y="314" key="UIDesigner.ListEditorDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605289315536" />
     <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1603439778491">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
