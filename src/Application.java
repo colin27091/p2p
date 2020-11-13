@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.net.Socket;
 import java.security.Key;
 import java.util.List;
@@ -12,11 +13,11 @@ public class Application {
         new Application(new Socket());
     }*/
 
-    public Application(){
+    public Application() throws IOException {
         appGUI = new AppGUI();
     }
 
-    public Application(Socket socket, Key key){
+    public Application(Socket socket, Key key) throws IOException {
         this.socket = socket;
         this.key = key;
         appGUI = new AppGUI();

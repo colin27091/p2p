@@ -1,17 +1,22 @@
+
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
-import java.util.Collections;
-import java.util.List;
+
+import java.io.IOException;
+
 
 public class AppGUI extends JFrame {
 
-    static int width = 900;
-    static int height = 700;
+    static int width = 600;
+    static int height = 500;
     private JPanel pane;
-    private JTextField textField1;
 
-    public AppGUI(){
+    private JLabel transfer;
+    private JLabel send;
+    private JTextField text;
+
+
+    public AppGUI() throws IOException {
 
         this.setTitle("P2P Conversation");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -22,6 +27,10 @@ public class AppGUI extends JFrame {
         this.setVisible(true);
         this.setLocationRelativeTo(null);
         this.setContentPane(pane);
+
+        this.transfer.setIcon(new ImageIcon("icons/add.png"));
+        this.send.setIcon(new ImageIcon("icons/send.png"));
+
 
 
     }
