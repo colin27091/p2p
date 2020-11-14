@@ -17,8 +17,8 @@ public class Client extends JFrame{
     private JLabel error;
 
     private Socket socket;
-    private InputStream in;
-    private OutputStream out;
+    private InputStream inMessage;
+    private OutputStream outMessage;
     private PrivateKey privateKey;
     private PublicKey publicKey;
     private Key key;
@@ -62,13 +62,13 @@ public class Client extends JFrame{
     private void openConnection(String strServer, int intPort) {
         try {
             socket = new Socket(strServer, intPort);
-            in = socket.getInputStream();
-            out = socket.getOutputStream();
+            inMessage = socket.getInputStream();
+            outMessage = socket.getOutputStream();
             Key[] keys = Util.generateKeys();
             this.privateKey = (PrivateKey) keys[0];
             this.publicKey = (PublicKey) keys[1];
-            Util.sendObject(out,publicKey);
-            key = (Key) Util.decryptObject((byte[]) Util.receiveObject(in), privateKey);
+            Util.sendObject(outMessage,publicKey);
+            key = (Key) Util.decryptObject((byte[]) Util.receiveObject(inMessage), privateKey);
             dispose();
             new Application(socket, key);
         } catch (IOException | ClassNotFoundException | NoSuchPaddingException | NoSuchAlgorithmException | InvalidKeyException | BadPaddingException | IllegalBlockSizeException e) {
