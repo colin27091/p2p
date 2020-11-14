@@ -40,11 +40,14 @@ public class Application {
         inputStream = socket.getInputStream();
         outputStream = socket.getOutputStream();
         this.key = key;
+
         appGUI = new AppGUI();
         this.getListener();
         //Scanner word = new Scanner(System.in);
         //sendMessage();
         receive.start();
+        folderReceive = getFolderReceive();
+        sendMessage("Connexion établie");
 
     }
 
@@ -56,7 +59,14 @@ public class Application {
         fileChooser.showOpenDialog(null);
         File fileSelected = fileChooser.getSelectedFile();
         if(fileSelected != null){
-            System.out.println(fileSelected.getName());
+            try {
+                byte[] bytes = Util.cryptObject(fileSelected, key);
+                Util.sendObject(outputStream, bytes);
+                appGUI.addMessageFromMe("Transfert d'un fichier en cours");
+                appGUI.input.setText("");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -71,7 +81,11 @@ public class Application {
         appGUI.send.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                sendMessage();
+                String message = appGUI.input.getText();
+                if(!appGUI.input.getText().isEmpty()) {
+                    sendMessage(message);
+                    appGUI.input.setText("");
+                }
             }
         });
     }
@@ -80,27 +94,31 @@ public class Application {
         while(true){
             try{
                 byte[] bytes = (byte[]) Util.receiveObject(inputStream);
-                String message = (String) Util.decryptObject(bytes, key);
-                appGUI.addMessageFromOther(message);
-            } catch (Exception e){
-
-            }
+                try{
+                    String message = (String) Util.decryptObject(bytes, key);
+                    appGUI.addMessageFromOther(message);
+                } catch (ClassCastException e){
+                    File file = (File) Util.decryptObject(bytes, key);
+                    appGUI.addMessageFromOther("Transfert d'un fichier en cours");
+                    writeFileInFolder(file);
+                }
+            } catch(Exception e){
+}
         }
     });
 
-    public void sendMessage(){
-        if(!appGUI.input.getText().isEmpty()){
-            String message = appGUI.input.getText();
-            try {
-                byte[] bytes = Util.cryptObject(message, key);
-                Util.sendObject(outputStream, bytes);
-                appGUI.addMessageFromMe(message);
-                appGUI.input.setText("");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+    public void sendMessage(String message){
+
+        try {
+            byte[] bytes = Util.cryptObject(message, key);
+            Util.sendObject(outputStream, bytes);
+            appGUI.addMessageFromMe(message);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
     }
+
 
     public File getFolderReceive(){
         JFileChooser fileChooser = new JFileChooser("receive");
@@ -113,17 +131,17 @@ public class Application {
     }
 
     public void writeFileInFolder(File file) throws IOException {
-        FileInputStream inputStream = new FileInputStream(file);
-        FileOutputStream outputStream = new FileOutputStream(folderReceive.getAbsolutePath()+"\\"+file.getName());
+        FileInputStream inputStreamFile = new FileInputStream(file);
+        FileOutputStream outputStreamFile = new FileOutputStream(folderReceive.getAbsolutePath()+"\\"+file.getName());
         Thread write = new Thread(() -> {
             try {
                 int c;
-                while((c= inputStream.read()) != -1){
-                    outputStream.write(c);
+                while((c= inputStreamFile.read()) != -1){
+                    outputStreamFile.write(c);
                 }
-                System.out.println("Fin "+ file.getName());
-                inputStream.close();
-                outputStream.close();
+                inputStreamFile.close();
+                outputStreamFile.close();
+                sendMessage("Fichier recu");
             } catch (IOException e) {
                 e.printStackTrace();
             }

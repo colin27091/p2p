@@ -2,17 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c95a9152-fcc7-40bf-a33b-b9bfa42a691a" name="Default Changelist" comment="change direction">
-      <change afterPath="$PROJECT_DIR$/receive/music.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/receive/music2.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/send/music.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/send/music2.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/send/text.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/receive/text.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppGUI.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/receive/music.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/receive/music2.mp3" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +49,9 @@
     <property name="settings.editor.selected.configurable" value="project.propDebugger" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\c\Documents\CoursEPSI\Reseaux\p2p\send" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\c\Documents\CoursEPSI\Reseaux\p2p\send" />
       <recent name="C:\Users\c\Documents\CoursEPSI\Reseaux\p2p\icons" />
@@ -164,10 +161,10 @@
     </state>
     <state x="2199" y="85" width="1092" height="715" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605088100152" />
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1603367398416" />
-    <state x="2585" y="321" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605348188328">
+    <state x="2585" y="321" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605374407594">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2585" y="321" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605348188328" />
+    <state x="2585" y="321" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605374407594" />
     <state x="548" y="117" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1603367369777">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -202,25 +199,25 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1603441081858" />
-    <state width="1877" height="278" key="GridCell.Tab.0.bottom" timestamp="1605373225123">
+    <state width="1877" height="278" key="GridCell.Tab.0.bottom" timestamp="1605375241451">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="278" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605373225123" />
+    <state width="1877" height="278" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605375241451" />
     <state width="1493" height="291" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1603449065157" />
-    <state width="1877" height="278" key="GridCell.Tab.0.center" timestamp="1605373225123">
+    <state width="1877" height="278" key="GridCell.Tab.0.center" timestamp="1605375241451">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="278" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605373225123" />
+    <state width="1877" height="278" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605375241451" />
     <state width="1493" height="291" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1603449065157" />
-    <state width="1877" height="278" key="GridCell.Tab.0.left" timestamp="1605373225123">
+    <state width="1877" height="278" key="GridCell.Tab.0.left" timestamp="1605375241451">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="278" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605373225123" />
+    <state width="1877" height="278" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605375241451" />
     <state width="1493" height="291" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1603449065157" />
-    <state width="1877" height="278" key="GridCell.Tab.0.right" timestamp="1605373225123">
+    <state width="1877" height="278" key="GridCell.Tab.0.right" timestamp="1605375241451">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="278" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605373225123" />
+    <state width="1877" height="278" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1605375241451" />
     <state width="1493" height="291" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1603449065157" />
     <state width="1877" height="187" key="GridCell.Tab.1.bottom" timestamp="1605297426237">
       <screen x="1920" y="0" width="1920" height="1040" />
