@@ -4,6 +4,8 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.*;
@@ -88,6 +90,19 @@ public class Application {
                 }
             }
         });
+
+        appGUI.input.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode() == 10){ //entrée -> send
+                    String message = appGUI.input.getText();
+                    if(!appGUI.input.getText().isEmpty()) {
+                        sendMessage(message);
+                        appGUI.input.setText("");
+                    }
+                }
+            }
+        });
     }
 
     Thread receive = new Thread(() -> {
@@ -99,7 +114,7 @@ public class Application {
                     appGUI.addMessageFromOther(message);
                 } catch (ClassCastException e){
                     File file = (File) Util.decryptObject(bytes, key);
-                    appGUI.addMessageFromOther("Transfert d'un fichier en cours");
+                    appGUI.addMessageFromOther("Transfert d'un fichier en cours ...");
                     writeFileInFolder(file);
                 }
             } catch(Exception e){

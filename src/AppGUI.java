@@ -3,6 +3,8 @@ import javax.swing.*;
 import java.awt.*;
 
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 
 
@@ -10,7 +12,7 @@ public class AppGUI extends JFrame {
 
     static int width = 600;
     static int height = 500;
-    private JPanel pane;
+    public JPanel pane;
 
     public JTextField input;
     public JLabel send;
@@ -34,6 +36,7 @@ public class AppGUI extends JFrame {
 
         this.transfer.setIcon(new ImageIcon("icons/add.png"));
         this.send.setIcon(new ImageIcon("icons/send.png"));
+
     }
 
     public void addMessageFromMe(String message){

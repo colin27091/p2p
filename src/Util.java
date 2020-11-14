@@ -1,4 +1,4 @@
-import org.jetbrains.annotations.NotNull;
+
 
 import javax.crypto.*;
 import java.io.*;
@@ -57,7 +57,6 @@ public class Util {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         ObjectOutputStream outObjectBos = new ObjectOutputStream(bos);
         outObjectBos.writeObject(obj);
-        System.out.println(bos.toByteArray().length);
         return cipher.doFinal(bos.toByteArray());
     }
 
