@@ -32,24 +32,6 @@ public class Application {
 
     }
 
-    public void transferFile(){
-        JFileChooser fileChooser = new JFileChooser("send");
-        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-
-        fileChooser.setDialogTitle("Transferer un fichier");
-        fileChooser.showOpenDialog(null);
-        File fileSelected = fileChooser.getSelectedFile();
-        if(fileSelected != null){
-            try {
-                byte[] bytes = Util.cryptObject(fileSelected, key);
-                Util.sendObject(outputStream, bytes);
-                appGUI.addMessageFromMe("Transfert d'un fichier en cours .. ");
-                appGUI.input.setText("");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
 
     public void getListener(){
         appGUI.transfer.addMouseListener(new MouseAdapter()
@@ -92,15 +74,36 @@ public class Application {
                     String message = (String) Util.decryptObject(bytes, key);
                     appGUI.addMessageFromOther(message);
                 } catch (ClassCastException e){
+                    System.out.println(bytes.length);
                     File file = (File) Util.decryptObject(bytes, key);
+                    System.out.println(file.length());
                     appGUI.addMessageFromOther("Transfert d'un fichier en cours ...");
                     writeFileInFolder(file);
-                    System.out.println(file.length());
                 }
             } catch(Exception e){
 }
         }
     });
+
+    public void transferFile(){
+        JFileChooser fileChooser = new JFileChooser("send");
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+
+        fileChooser.setDialogTitle("Transferer un fichier");
+        fileChooser.showOpenDialog(null);
+        File fileSelected = fileChooser.getSelectedFile();
+        if(fileSelected != null){
+            try {
+                byte[] bytes = Util.cryptObject(fileSelected, key);
+                System.out.println(bytes);
+                Util.sendObject(outputStream, bytes);
+                appGUI.addMessageFromMe("Transfert d'un fichier en cours .. ");
+                appGUI.input.setText("");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     public void sendMessage(String message){
 
