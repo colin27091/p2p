@@ -1,20 +1,13 @@
-import javax.crypto.BadPaddingException;
-import javax.crypto.Cipher;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
 import javax.swing.*;
-import javax.swing.filechooser.FileSystemView;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.*;
 import java.net.Socket;
-import java.nio.file.Files;
-import java.security.InvalidKeyException;
+
 import java.security.Key;
-import java.security.NoSuchAlgorithmException;
-import java.util.Scanner;
+
 
 public class Application {
 
@@ -25,18 +18,6 @@ public class Application {
     private InputStream inputStream;
     private OutputStream outputStream;
 
-
-    public Application() throws IOException {
-        //folderReceive = getFolderReceive();
-        appGUI = new AppGUI();
-        this.getListener();
-        /*File file = new File("send/music.mp3");
-        File file2 = new File("send/music2.mp3");
-        this.writeFileInFolder(file);
-        this.writeFileInFolder(file2);*/
-
-    }
-
     public Application(Socket socket, Key key) throws IOException {
         this.socket = socket;
         inputStream = socket.getInputStream();
@@ -45,8 +26,6 @@ public class Application {
 
         appGUI = new AppGUI();
         this.getListener();
-        //Scanner word = new Scanner(System.in);
-        //sendMessage();
         receive.start();
         folderReceive = getFolderReceive();
         sendMessage("Connexion établie");
@@ -64,7 +43,7 @@ public class Application {
             try {
                 byte[] bytes = Util.cryptObject(fileSelected, key);
                 Util.sendObject(outputStream, bytes);
-                appGUI.addMessageFromMe("Transfert d'un fichier en cours");
+                appGUI.addMessageFromMe("Transfert d'un fichier en cours .. ");
                 appGUI.input.setText("");
             } catch (Exception e) {
                 e.printStackTrace();
@@ -116,6 +95,7 @@ public class Application {
                     File file = (File) Util.decryptObject(bytes, key);
                     appGUI.addMessageFromOther("Transfert d'un fichier en cours ...");
                     writeFileInFolder(file);
+                    System.out.println(file.length());
                 }
             } catch(Exception e){
 }
