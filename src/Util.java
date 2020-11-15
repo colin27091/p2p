@@ -18,7 +18,7 @@ public class Util {
         Key[] keys = new Key[2];
         keys[0] = pair.getPrivate();
         keys[1] = pair.getPublic();
-        return keys;
+        return keys; //génére les clées privée et publique
     }
 
     static Key createSymetricKey(){
@@ -29,10 +29,10 @@ public class Util {
         } catch (NoSuchAlgorithmException e) {
             System.err.println(e.getMessage());
         }
-        return generator.generateKey();
+        return generator.generateKey(); //genere la clé symetrique
     }
 
-    static void sendObject(OutputStream out, Object obj){
+    static void sendObject(OutputStream out, Object obj){ //envoie un objet à travers l'out
         try {
             ObjectOutputStream outObject = new ObjectOutputStream(out);
             outObject.writeObject(obj);
@@ -43,7 +43,7 @@ public class Util {
 
     }
 
-    static Object receiveObject(InputStream in) throws IOException, ClassNotFoundException {
+    static Object receiveObject(InputStream in) throws IOException, ClassNotFoundException { //recoit un objet à travers l'in
         ObjectInputStream inObject = new ObjectInputStream(in);
         return inObject.readObject();
     }
@@ -56,7 +56,7 @@ public class Util {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         ObjectOutputStream outObjectBos = new ObjectOutputStream(bos);
         outObjectBos.writeObject(obj);
-        return cipher.doFinal(bos.toByteArray());
+        return cipher.doFinal(bos.toByteArray()); //crypte un object avec la clé retourne un byte[] crypté
     }
 
     static Object decryptObject(byte[] bytes, Key key) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException, IOException, ClassNotFoundException {
@@ -68,7 +68,7 @@ public class Util {
 
         ByteArrayInputStream bis = new ByteArrayInputStream(decryptBytes);
         ObjectInputStream inObjectBis = new ObjectInputStream(bis);
-        return inObjectBis.readObject();
+        return inObjectBis.readObject(); //decypte un byte[] et le transforme en Object
     }
 
 

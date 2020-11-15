@@ -61,16 +61,16 @@ public class Client extends JFrame{
 
     private void openConnection(String strServer, int intPort) {
         try {
-            socket = new Socket(strServer, intPort);
+            socket = new Socket(strServer, intPort); //fait une demande de connexion au serveur choisi
             inMessage = socket.getInputStream();
             outMessage = socket.getOutputStream();
-            Key[] keys = Util.generateKeys();
+            Key[] keys = Util.generateKeys(); //genere les clés asymetriques
             this.privateKey = (PrivateKey) keys[0];
             this.publicKey = (PublicKey) keys[1];
-            Util.sendObject(outMessage,publicKey);
-            key = (Key) Util.decryptObject((byte[]) Util.receiveObject(inMessage), privateKey);
+            Util.sendObject(outMessage,publicKey); //envoie la clé publique
+            key = (Key) Util.decryptObject((byte[]) Util.receiveObject(inMessage), privateKey); //recoit la clé symetrique du serveur et la décrypte
             dispose();
-            new Application(socket, key);
+            new Application(socket, key); //lance l'application
         } catch (IOException | ClassNotFoundException | NoSuchPaddingException | NoSuchAlgorithmException | InvalidKeyException | BadPaddingException | IllegalBlockSizeException e) {
             error.setText("Connexion non établie");
             error.setForeground(Color.red);

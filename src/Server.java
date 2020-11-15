@@ -59,14 +59,14 @@ public class Server extends JFrame{
             dispose();
             Thread getSocket = new Thread(() -> {
                 try {
-                    socket = serverSocket.accept();
+                    socket = serverSocket.accept(); //ouvre le serveur
                     message.dispose();
                     in = socket.getInputStream();
                     out = socket.getOutputStream();
-                    PublicKey guestPK = (PublicKey) Util.receiveObject(in);
-                    key = Util.createSymetricKey();
-                    Util.sendObject(out, Util.cryptObject(key, guestPK));
-                    new Application(socket, key);
+                    PublicKey guestPK = (PublicKey) Util.receiveObject(in); //recoit la clé publique du client en clair
+                    key = Util.createSymetricKey(); //crée la clé symetrique
+                    Util.sendObject(out, Util.cryptObject(key, guestPK)); //crypte la clé symetrique avec la clé publique du client en l'envoie
+                    new Application(socket, key); //lance l'application
                 } catch (IOException | ClassNotFoundException | NoSuchPaddingException | NoSuchAlgorithmException | InvalidKeyException | BadPaddingException | IllegalBlockSizeException e) {
                     e.printStackTrace();
                 }

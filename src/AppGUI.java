@@ -39,11 +39,11 @@ public class AppGUI extends JFrame {
 
     }
 
-    public void addMessageFromMe(String message){
+    public void addMessageFromMe(String message){ //ajoute un message dans la liste des message
         this.messages.setText(this.messages.getText() + "You : " + message + "\n");
     }
 
-    public void addMessageFromOther(String message){
+    public void addMessageFromOther(String message){ //ajoute un message dans la liste des message
         this.messages.setText(this.messages.getText() + "Other : " + message + "\n");
     }
 

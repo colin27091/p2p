@@ -24,9 +24,9 @@ public class Acceuil extends JFrame{
             dispose();
             new Client();
         });
-            serverButton.addActionListener(e -> {
-                dispose();
-                new Server();
-            });
-        }
+        serverButton.addActionListener(e -> {
+            dispose();
+            new Server();
+        });
+    }
 }
